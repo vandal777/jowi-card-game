@@ -2,7 +2,7 @@
   "name": "jowi-card-game",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://vandal777.github.io/jowi-card-game",
+  "homepage": "https://vandal777.github.io/jowi-card-game/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
