@@ -49,10 +49,8 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <div className="container">
-        <div className="line-text">JOWI CARD GAME</div>
-      </div>
+    <div className="container">
+      <div className="line-text">JOWI CARD GAME</div>
       <img
         src={
           shuffling
@@ -77,6 +75,7 @@ function App() {
             color: "white",
             textTransform: "uppercase",
           }}
+          className="neon-text"
         >
           PARTY GOGO TIME
         </div>
@@ -92,6 +91,7 @@ function App() {
             color: "white",
             textTransform: "uppercase",
           }}
+          className="stripe-text"
         >
           {initGame
             ? "Esto seria la explicacion de la carta"
