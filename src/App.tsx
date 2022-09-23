@@ -1,9 +1,9 @@
-import './App.css';
+import "./App.css";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-import { cards } from './const';
-import { images } from './assets/images';
+import { cards } from "./const";
+import { images } from "./assets/images";
 
 function App() {
   const arrayOfNumbers: number[] = [];
@@ -32,7 +32,7 @@ function App() {
       setInitGame(true);
       setSelectedCards((item) => item + 1);
       setShuffling(false);
-    }, 2000);
+    }, 10000);
   };
   const selectRandomCard = async () => {
     setShuffling(true);
@@ -49,7 +49,7 @@ function App() {
 
   return (
     <div className="App">
-      <div>{shuffling && 'leo'}</div>
+      <div>{shuffling && "leo"}</div>
 
       <div>JOWI CARD GAME</div>
       <img
@@ -61,39 +61,56 @@ function App() {
             : cards[shuffledArray[selectedCards]]
         }
         alt="jowi card"
-        width={'80%'}
-        style={{ border: '8px solid black', borderRadius: 16 }}
+        width={"80%"}
+        style={{ border: "8px solid black", borderRadius: 16 }}
       />
-      <div
-        style={{
-          top: 400,
-          height: 200,
-          position: 'absolute',
-          margin: '0px 60px',
-          fontSize: 24,
-          fontWeight: 'bold',
-          color: 'white',
-          textTransform: 'uppercase',
-        }}
-      >
-        Esto seria la explicacion de la carta
-      </div>
+      {shuffling ? (
+        <div
+          style={{
+            top: 200,
+            position: "absolute",
+            width: "100%",
+            margin: "0px auto",
+            fontSize: 32,
+            fontWeight: "bold",
+            color: "white",
+            textTransform: "uppercase",
+          }}
+        >
+          PARTY GOGO TIME
+        </div>
+      ) : (
+        <div
+          style={{
+            top: 400,
+            height: 200,
+            position: "absolute",
+            margin: "0px 60px",
+            fontSize: 24,
+            fontWeight: "bold",
+            color: "white",
+            textTransform: "uppercase",
+          }}
+        >
+          Esto seria la explicacion de la carta
+        </div>
+      )}
       <button
         onClick={selectRandomCard}
         style={{
-          boxShadow: 'inset 0px 1px 0px 0px #a4e271',
-          background: 'linear-gradient(to bottom, #89c403 5%, #77a809 100%)',
-          backgroundColor: '#89c403',
+          boxShadow: "inset 0px 1px 0px 0px #a4e271",
+          background: "linear-gradient(to bottom, #89c403 5%, #77a809 100%)",
+          backgroundColor: "#89c403",
           borderRadius: 6,
-          border: '1px solid #74b8070',
-          display: 'inline-block',
-          color: '#ffffff',
-          fontFamily: 'Arial',
+          border: "1px solid #74b8070",
+          display: "inline-block",
+          color: "#ffffff",
+          fontFamily: "Arial",
           fontSize: 15,
-          fontWeight: 'bold',
-          padding: '6px 24px',
-          textDecoration: 'none',
-          textShadow: '0px 1px 0px #528009',
+          fontWeight: "bold",
+          padding: "6px 24px",
+          textDecoration: "none",
+          textShadow: "0px 1px 0px #528009",
         }}
       >
         PRESIONA PARA DESTAPAR UN CARTA
