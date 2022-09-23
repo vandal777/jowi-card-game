@@ -1,4 +1,5 @@
 import "./App.css";
+import "./styles.scss";
 
 import { useEffect, useState } from "react";
 
@@ -49,9 +50,9 @@ function App() {
 
   return (
     <div className="App">
-      <div>{shuffling && "leo"}</div>
-
-      <div>JOWI CARD GAME</div>
+      <div className="container">
+        <div className="line-text">JOWI CARD GAME</div>
+      </div>
       <img
         src={
           shuffling
@@ -62,7 +63,7 @@ function App() {
         }
         alt="jowi card"
         width={"80%"}
-        style={{ border: "8px solid black", borderRadius: 16 }}
+        style={{ border: "8px solid white", borderRadius: 16 }}
       />
       {shuffling ? (
         <div
@@ -92,15 +93,19 @@ function App() {
             textTransform: "uppercase",
           }}
         >
-          Esto seria la explicacion de la carta
+          {initGame
+            ? "Esto seria la explicacion de la carta"
+            : "Aqui empieza el juego de jowi"}
         </div>
       )}
       <button
         onClick={selectRandomCard}
         style={{
           boxShadow: "inset 0px 1px 0px 0px #a4e271",
-          background: "linear-gradient(to bottom, #89c403 5%, #77a809 100%)",
-          backgroundColor: "#89c403",
+          background: shuffling
+            ? "grey"
+            : "linear-gradient(to bottom, #89c403 5%, #77a809 100%)",
+          backgroundColor: shuffling ? "grey" : "#89c403",
           borderRadius: 6,
           border: "1px solid #74b8070",
           display: "inline-block",
@@ -112,8 +117,9 @@ function App() {
           textDecoration: "none",
           textShadow: "0px 1px 0px #528009",
         }}
+        disabled={shuffling}
       >
-        PRESIONA PARA DESTAPAR UN CARTA
+        {shuffling ? "Gogo party time" : "PRESIONA PARA DESTAPAR UN CARTA"}
       </button>
     </div>
   );
