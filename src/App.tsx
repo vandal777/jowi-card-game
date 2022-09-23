@@ -2,74 +2,45 @@ import "./App.css";
 
 import { useEffect, useState } from "react";
 
-import { images } from "./assets/images";
+import { cards } from "./const";
 
-const cards = [
-  images.joker,
-  images.card0,
-  images.card1,
-  images.card2,
-  images.card3,
-  images.card4,
-  images.card5,
-  images.card6,
-  images.card7,
-  images.card8,
-  images.card9,
-  images.card11,
-  images.card12,
-  images.card13,
-  images.card14,
-  images.card15,
-  images.card16,
-  images.card17,
-  images.card18,
-  images.card19,
-  images.card20,
-  images.card21,
-  images.card22,
-  images.card23,
-  images.card24,
-  images.card25,
-  images.card26,
-  images.card27,
-  images.card28,
-  images.card29,
-  images.card30,
-  images.card31,
-  images.card32,
-  images.card33,
-  images.card34,
-  images.card35,
-  images.card36,
-  images.card37,
-  images.card38,
-  images.card39,
-  images.card40,
-  images.card41,
-  images.card42,
-  images.card43,
-  images.card44,
-  images.card45,
-  images.card46,
-  images.card47,
-  images.card48,
-  images.card49,
-  images.card50,
-  images.card51,
-];
 function App() {
   const arrayOfNumbers: number[] = [];
 
   const [shuffledArray, setShuffledArray] = useState<number[]>([]);
   const [selectedCards, setSelectedCards] = useState<number>(0);
 
-  const selectRandomCard = () => {
-    setSelectedCards((item) => item + 1);
+  const [initGame, setInitGame] = useState<boolean>(false);
+
+  const [shuffling, setShuffling] = useState<boolean>(false);
+
+  const cacheImages = async (urls: string[]) => {
+    const promises = urls.map((url) => {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.src = url;
+        img.onload = resolve;
+        img.onerror = reject;
+      });
+    });
+    await Promise.all(promises);
+  };
+
+  const selectCard = async () => {
+    await setTimeout(() => {
+      setInitGame(true);
+      setSelectedCards((item) => item + 1);
+      setShuffling(false);
+    }, 2000);
+  };
+  const selectRandomCard = async () => {
+    setShuffling(true);
+    await selectCard();
   };
 
   useEffect(() => {
-    for (let i = 0; i < 52; i++) {
+    cacheImages(cards);
+    for (let i = 1; i < 52; i++) {
       arrayOfNumbers[i] = i;
     }
     setShuffledArray(arrayOfNumbers.sort((a, b) => 0.5 - Math.random()));
@@ -77,9 +48,17 @@ function App() {
 
   return (
     <div className="App">
+      <div>{shuffling && "leo"}</div>
+
       <div>JOWI CARD GAME</div>
       <img
-        src={cards[shuffledArray[selectedCards]]}
+        src={
+          shuffling
+            ? cards[0]
+            : !initGame
+            ? cards[0]
+            : cards[shuffledArray[selectedCards]]
+        }
         alt="jowi card"
         width={"80%"}
         style={{ border: "8px solid black", borderRadius: 16 }}
