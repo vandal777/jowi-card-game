@@ -1,4 +1,5 @@
 export const images = {
+  wait: require('./images/wait.png'),
   joker: require("./images/joker.PNG"),
   card0: require("./images/A-1.JPG"),
   card1: require("./images/2-1.JPG"),
