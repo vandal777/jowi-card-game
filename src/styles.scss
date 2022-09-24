@@ -219,3 +219,12 @@ h2 {
     9px 9px hsl(50, 50%, 29%), 10px 10px hsl(50, 50%, 28%),
     10px 10px 30px rgba(0, 0, 0, 0.7);
 }
+
+input,
+textarea,
+button,
+select,
+div,
+a {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
