@@ -45,7 +45,7 @@ function App() {
   useEffect(() => {
     myRef.current?.scrollTo(0, 0);
 
-    cacheImages(cards);
+    cacheImages([...cards, images.wait]);
     for (let i = 0; i < 51; i++) {
       arrayOfNumbers[i] = i;
     }
