@@ -1,13 +1,14 @@
 import "./App.css";
 import "./styles.scss";
 
+import { cards, description } from "./const";
 import { useEffect, useState } from "react";
 
-import { cards } from "./const";
 import { images } from "./assets/images";
 
 function App() {
   const arrayOfNumbers: number[] = [];
+  const audio = new Audio("./assets/sounds/jowi1.mp3");
 
   const [shuffledArray, setShuffledArray] = useState<number[]>([]);
   const [selectedCards, setSelectedCards] = useState<number>(0);
@@ -33,94 +34,90 @@ function App() {
       setInitGame(true);
       setSelectedCards((item) => item + 1);
       setShuffling(false);
+      audio.pause();
     }, 10000);
   };
   const selectRandomCard = async () => {
     setShuffling(true);
+    audio.play();
     await selectCard();
   };
 
   useEffect(() => {
     cacheImages(cards);
-    for (let i = 1; i < 52; i++) {
+    for (let i = 0; i < 51; i++) {
       arrayOfNumbers[i] = i;
     }
     setShuffledArray(arrayOfNumbers.sort((a, b) => 0.5 - Math.random()));
   }, []);
 
   return (
-    <div className="container">
-      <div className="line-text">JOWI CARD GAME</div>
-      <img
-        src={
-          shuffling
-            ? images.wait
-            : !initGame
-            ? cards[0]
-            : cards[shuffledArray[selectedCards]]
-        }
-        alt="jowi card"
-        width={"80%"}
-        style={{ border: "8px solid white", borderRadius: 16 }}
-      />
-      {shuffling ? (
-        <div
-          style={{
-            top: 200,
-            position: "absolute",
-            width: "100%",
-            margin: "0px auto",
-            fontSize: 32,
-            fontWeight: "bold",
-            color: "white",
-            textTransform: "uppercase",
-          }}
-          className="neon-text"
-        >
-          PARTY GOGO TIME
-        </div>
-      ) : (
-        <div
-          style={{
-            top: 400,
-            height: 200,
-            position: "absolute",
-            margin: "0px 60px",
-            fontSize: 24,
-            fontWeight: "bold",
-            color: "white",
-            textTransform: "uppercase",
-          }}
-          className="stripe-text"
-        >
-          {initGame
-            ? "Esto seria la explicacion de la carta"
-            : "Aqui empieza el juego de jowi"}
-        </div>
-      )}
-      <button
-        onClick={selectRandomCard}
+    <div>
+      <div
         style={{
-          boxShadow: "inset 0px 1px 0px 0px #a4e271",
-          background: shuffling
-            ? "grey"
-            : "linear-gradient(to bottom, #89c403 5%, #77a809 100%)",
-          backgroundColor: shuffling ? "grey" : "#89c403",
-          borderRadius: 6,
-          border: "1px solid #74b8070",
-          display: "inline-block",
-          color: "#ffffff",
-          fontFamily: "Arial",
-          fontSize: 15,
-          fontWeight: "bold",
-          padding: "6px 24px",
-          textDecoration: "none",
-          textShadow: "0px 1px 0px #528009",
+          width: "100%",
+          textAlign: "center",
         }}
-        disabled={shuffling}
       >
-        {shuffling ? "Gogo party time" : "PRESIONA PARA DESTAPAR UN CARTA"}
-      </button>
+        <h1>
+          <span>JOWI</span>
+          <span>JOWI</span>
+        </h1>
+        <h2>CARD GAME</h2>
+      </div>
+      <div
+        className="container"
+        onClick={() => !shuffling && selectRandomCard()}
+        style={{ textAlign: "center" }}
+      >
+        <img
+          src={
+            shuffling
+              ? images.wait
+              : !initGame
+              ? images.joker
+              : cards[shuffledArray[selectedCards]]
+          }
+          alt="jowi card"
+          width={"80%"}
+          style={{
+            border: "8px solid white",
+            borderRadius: 16,
+          }}
+        />
+        {shuffling ? (
+          <div
+            style={{
+              top: 200,
+              position: "absolute",
+              width: "100%",
+              margin: "0px auto",
+              fontSize: 32,
+              fontWeight: "bold",
+              color: "white",
+              textTransform: "uppercase",
+            }}
+            className="neon-text"
+          >
+            PARTY GOGO TIME
+          </div>
+        ) : (
+          <h1
+            style={{
+              top: 570,
+              height: 60,
+              position: "absolute",
+              textTransform: "uppercase",
+              width: "100%",
+            }}
+            className="description"
+          >
+            {initGame
+              ? description[shuffledArray[selectedCards]]
+              : "Aqui empieza el juego de jowi"}
+          </h1>
+        )}
+      </div>
     </div>
   );
 }
