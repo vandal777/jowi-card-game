@@ -53,19 +53,6 @@ export const description = [
   "la norma",
   "el fantasma",
   "el rei",
-  "cascada",
-  "tria",
-  "et toca",
-  "li toca a les noies",
-  "el déu del dit",
-  "li toca als nois",
-  "al cel",
-  "tria un company",
-  "hora de memoritzar",
-  "la llista",
-  "la norma",
-  "el fantasma",
-  "el rei",
 ];
 
 export const cards = [
@@ -79,6 +66,7 @@ export const cards = [
   images.card7,
   images.card8,
   images.card9,
+  images.card10,
   images.card11,
   images.card12,
   images.card13,

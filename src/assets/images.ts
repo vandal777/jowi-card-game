@@ -11,6 +11,7 @@ export const images = {
   card7: require("./images/8-1.JPG"),
   card8: require("./images/9-1.JPG"),
   card9: require("./images/10-1.JPG"),
+  card10: require("./images/J-1.JPG"),
   card11: require("./images/Q-1.JPG"),
   card12: require("./images/K-1.JPG"),
   card13: require("./images/A-2.JPG"),
