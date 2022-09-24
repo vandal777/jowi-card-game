@@ -34,28 +34,6 @@ $large: 84px;
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  min-height: 100vh;
-  min-width: 100vw;
-  background-color: $brown;
-  @include center;
-}
-
-.lines {
-  $color: #59c1fe;
-  position: fixed;
-  width: 100vw;
-  height: 2em;
-  background: linear-gradient(
-    rgba($color, 0.2) 20%,
-    $color 40%,
-    $color 60%,
-    rgba($color, 0.2) 80%
-  );
-  background-size: 1px 0.5em;
-  box-shadow: 0 0 1em rgba($color, 0.4);
-  transform: translateY(-1em);
-  left: 0;
 }
 
 // Style 1, line text
@@ -97,10 +75,9 @@ h1 {
   position: relative;
   font-family: "Exo";
   font-size: 5em;
-  margin-top: -60px;
   transform: skew(-15deg);
   letter-spacing: 0.03em;
-
+  margin: 0;
   &::after {
     content: "";
     position: absolute;
@@ -146,8 +123,9 @@ h1 {
 h2 {
   font-family: "Mr Dafoe";
   margin: 0;
+  margin-top: -40px;
+  margin-bottom: 5px;
   font-size: 2em;
-  margin-top: -3em;
   color: white;
   text-shadow: 0 0 0.05em #fff, 0 0 0.2em #fe05e1, 0 0 0.3em #fe05e1;
   transform: rotate(-7deg);
@@ -226,5 +204,5 @@ button,
 select,
 div,
 a {
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }

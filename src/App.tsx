@@ -1,8 +1,7 @@
-import "./App.css";
 import "./styles.scss";
 
 import { cards, description } from "./const";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { images } from "./assets/images";
 
@@ -12,7 +11,7 @@ function App() {
 
   const [shuffledArray, setShuffledArray] = useState<number[]>([]);
   const [selectedCards, setSelectedCards] = useState<number>(0);
-
+  const myRef = useRef<HTMLDivElement>(null);
   const [initGame, setInitGame] = useState<boolean>(false);
 
   const [shuffling, setShuffling] = useState<boolean>(false);
@@ -44,6 +43,8 @@ function App() {
   };
 
   useEffect(() => {
+    myRef.current?.scrollTo(0, 0);
+
     cacheImages(cards);
     for (let i = 0; i < 51; i++) {
       arrayOfNumbers[i] = i;
@@ -52,7 +53,7 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <div ref={myRef}>
       <div
         style={{
           width: "100%",
@@ -79,9 +80,9 @@ function App() {
               : cards[shuffledArray[selectedCards]]
           }
           alt="jowi card"
-          width={"80%"}
+          width={"75%"}
           style={{
-            border: "8px solid white",
+            border: "8px solid black",
             borderRadius: 16,
           }}
         />
@@ -94,7 +95,7 @@ function App() {
               margin: "0px auto",
               fontSize: 32,
               fontWeight: "bold",
-              color: "white",
+              color: "black",
               textTransform: "uppercase",
             }}
             className="neon-text"
@@ -102,9 +103,9 @@ function App() {
             PARTY GOGO TIME
           </div>
         ) : (
-          <h1
+          <div
             style={{
-              top: 570,
+              top: 520,
               height: 60,
               position: "absolute",
               textTransform: "uppercase",
@@ -114,8 +115,8 @@ function App() {
           >
             {initGame
               ? description[shuffledArray[selectedCards]]
-              : "Aqui empieza el juego de jowi"}
-          </h1>
+              : "Aqui empieza el juego"}
+          </div>
         )}
       </div>
     </div>
