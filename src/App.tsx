@@ -89,6 +89,7 @@ function App() {
             border: "8px solid black",
             borderRadius: 16,
           }}
+          className={"breathing-button"}
         />
         {shuffling ? (
           <div
