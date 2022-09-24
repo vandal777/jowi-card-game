@@ -3,11 +3,13 @@ import "./styles.scss";
 import { cards, description } from "./const";
 import { useEffect, useRef, useState } from "react";
 
+import Play from "./Play";
 import { images } from "./assets/images";
+import useAudioPlayer from "./useAudioPlayer";
 
 function App() {
   const arrayOfNumbers: number[] = [];
-  const audio = new Audio("./assets/sounds/jowi1.mp3");
+  const { setPlaying } = useAudioPlayer();
 
   const [shuffledArray, setShuffledArray] = useState<number[]>([]);
   const [selectedCards, setSelectedCards] = useState<number>(0);
@@ -33,12 +35,13 @@ function App() {
       setInitGame(true);
       setSelectedCards((item) => item + 1);
       setShuffling(false);
-      audio.pause();
+      setPlaying(false);
     }, 10000);
   };
+
   const selectRandomCard = async () => {
     setShuffling(true);
-    audio.play();
+    setPlaying(true);
     await selectCard();
   };
 
@@ -120,6 +123,10 @@ function App() {
           </div>
         )}
       </div>
+      <audio id="audio">
+        <source src={"./jowi-2.mp3"} />
+        Your browser does not support the <code>audio</code> element.
+      </audio>
     </div>
   );
 }
