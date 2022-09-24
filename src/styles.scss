@@ -36,41 +36,6 @@ body {
   margin: 0;
 }
 
-// Style 1, line text
-.line-text {
-  $random-text: "foreign terrace";
-  $stroke-width: $extra-large * 0.05;
-  position: relative;
-  display: inline-block;
-  font-size: $extra-large;
-  font-weight: 800;
-  text-transform: uppercase;
-  font-style: italic;
-  color: transparent;
-  -webkit-text-stroke-width: $stroke-width;
-  -webkit-text-stroke-color: white;
-  white-space: nowrap;
-  $x: 12px;
-  $y: 15px;
-  $step: 1px;
-
-  text-shadow: $x $y $green, $x + $step $y + $step $pink,
-    $x + $step * 2 $y + $step * 2 $pink, $x + $step * 3 $y + $step * 3 $pink,
-    $x + $step * 4 $y + $step * 4 $pink, $x + $step * 5 $y + $step * 5 $pink,
-    $x + $step * 6 $y + $step * 6 $pink, $x + $step * 7 $y + $step * 7 $pink,
-    $x + $step * 8 $y + $step * 8 $pink, $x + $step * 9 $y + $step * 9 $pink,
-    $x + $step * 10 $y + $step * 10 $pink, $x + $step * 11 $y + $step * 11 $pink,
-    $x + $step * 12 $y + $step * 12 $pink, $x + $step * 13 $y + $step * 13 $pink;
-  // $x + $step * 14 $y + $step * 14 $pink,
-  // $x + $step * 15 $y + $step * 15 $pink,
-  // $x + $step * 16 $y + $step * 16 $pink,
-  // $x + $step * 17 $y + $step * 17 $pink,
-  // $x + $step * 18 $y + $step * 18 $pink,
-  // $x + $step * 19 $y + $step * 19 $pink,
-  // $x + $step * 20 $y + $step * 20 $pink,
-  // $x + $step * 21 $y + $step * 21 $pink,
-}
-
 h1 {
   position: relative;
   font-family: "Exo";
@@ -85,14 +50,6 @@ h1 {
     right: 0.05em;
     width: 0.4em;
     height: 0.4em;
-    background: radial-gradient(
-        white 3%,
-        rgba(white, 0.3) 15%,
-        rgba(white, 0.05) 60%,
-        transparent 80%
-      ),
-      radial-gradient(rgba(white, 0.2) 50%, transparent 60%) 50% 50% / 5% 100%,
-      radial-gradient(rgba(white, 0.2) 50%, transparent 60%) 50% 50% / 70% 5%;
     background-repeat: no-repeat;
   }
 
@@ -131,32 +88,6 @@ h2 {
   transform: rotate(-7deg);
 }
 
-.grid {
-  $main: #7d41e6;
-  $glow: rgba(#2e26ff, 0.4);
-  background: linear-gradient(
-      transparent 65%,
-      $glow 75%,
-      $main 80%,
-      $glow 85%,
-      transparent 95%
-    ),
-    linear-gradient(
-      90deg,
-      transparent 65%,
-      $glow 75%,
-      $main 80%,
-      $glow 85%,
-      transparent 95%
-    );
-  background-size: 30px 30px;
-  width: 200vw;
-  height: 300vh;
-  position: absolute;
-  bottom: -120vh;
-  transform: rotateX(-100deg);
-  -webkit-mask-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0) 80%);
-}
 .neon-text {
   $random-text: "underlying wire";
   position: relative;
