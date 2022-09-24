@@ -67,9 +67,11 @@ function App() {
         <h2>CARD GAME</h2>
       </div>
       <div
-        className="container"
         onClick={() => !shuffling && selectRandomCard()}
-        style={{ textAlign: "center" }}
+        style={{
+          textAlign: "center",
+          zIndex: 0,
+        }}
       >
         <img
           src={
@@ -115,7 +117,7 @@ function App() {
           >
             {initGame
               ? description[shuffledArray[selectedCards]]
-              : "Aqui empieza el juego"}
+              : "Aquí comença el joc"}
           </div>
         )}
       </div>
